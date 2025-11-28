@@ -1,0 +1,569 @@
+<!-- start your front-end with this file-->
+<!DOCTYPE html>
+
+<!-- Images on the website are AI-generated -->
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UHSL Student Center</title>
+    <!-- CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      /* Setting colors */
+      :root {
+        --uh-red: #cc0000;
+        --uh-gray: #555555;
+        --uh-light-gray: #f7f7f7;
+      }
+      .text-uh-red {
+        color: var(--uh-red);
+      }
+      .bg-uh-red {
+        background-color: var(--uh-red);
+      }
+      .border-uh-red {
+        border-color: var(--uh-red);
+      }
+      .text-uh-gray {
+        color: var(--uh-gray);
+      }
+
+      /* Setting font style */
+      body {
+        font-family: "Georgia", serif;
+        color: #333;
+        background-color: white;
+      }
+
+      /* Hero image styling (using the uploaded UHSLInside.png) */
+      .hero-section {
+        background-image: url("UHSLInside.png");
+        background-size: cover;
+        background-position: center;
+        height: 60vh;
+        min-height: 400px;
+      }
+
+      /* Styling for the collapsible FAQ answers */
+      .faq-answer {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease-out;
+      }
+      .faq-answer.active {
+        max-height: 500px; /* Large enough to accommodate typical content */
+        transition: max-height 0.4s ease-in;
+      }
+
+      /* Ensure smooth scrolling when navigating */
+      html {
+        scroll-behavior: smooth;
+      }
+      #rooms,
+      #events,
+      #faqs,
+      #contact {
+        scroll-margin-top: 5rem;
+      }
+    </style>
+  </head>
+  <body class="antialiased">
+    <!-- Navigation Bar -->
+    <header class="sticky top-0 z-50 bg-white shadow-md">
+      <nav
+        class="container mx-auto px-4 py-4 flex justify-between items-center"
+      >
+        <a
+          href="#home"
+          class="text-2xl font-bold text-uh-red flex items-center"
+        >
+          <img src="UHLogo.png" alt="UH Logo" class="h-10 mr-3" />
+          UHSL Student Center
+        </a>
+        <div class="hidden md:flex space-x-6 text-uh-gray font-medium">
+          <a href="#home" class="hover:text-uh-red transition duration-300"
+            >About</a
+          >
+          <a href="#rooms" class="hover:text-uh-red transition duration-300"
+            >Rooms & Booking</a
+          >
+          <a href="#events" class="hover:text-uh-red transition duration-300"
+            >Events</a
+          >
+          <a href="#faqs" class="hover:text-uh-red transition duration-300"
+            >FAQs</a
+          >
+          <a href="#contact" class="hover:text-uh-red transition duration-300"
+            >Contact</a
+          >
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <!-- Home/About Section -->
+      <section id="home" class="hero-section flex flex-col justify-end">
+        <div class="bg-black bg-opacity-40 p-8">
+          <div class="container mx-auto">
+            <h1 class="text-4xl sm:text-5xl font-extrabold text-white mb-3">
+              Welcome to the New Student Center!
+            </h1>
+            <p class="text-lg text-gray-200 max-w-2xl">
+              Your central hub for academic success, collaboration, and campus
+              life at UH Sugar Land.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Features/Goals Section (Based on Planning Doc) -->
+      <section id="features" class="py-16 bg-uh-light-gray">
+        <div class="container mx-auto px-4">
+          <h2 class="text-3xl font-bold text-center text-uh-gray mb-10">
+            Designed for Students, Faculty, and Guests
+          </h2>
+          <div class="grid md:grid-cols-3 gap-8 text-center">
+            <!-- Feature 1: Room Booking -->
+            <div
+              class="p-6 bg-white rounded-xl shadow-lg hover:shadow-2xl transition duration-300"
+            >
+              <svg
+                class="w-10 h-10 mx-auto mb-4 text-uh-red"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2zM12 17h.01"
+                ></path>
+              </svg>
+              <h3 class="text-xl font-semibold text-uh-red mb-2">
+                Reserve Your Space
+              </h3>
+              <p class="text-uh-gray">
+                Secure study rooms, collaborative pods, and large conference
+                rooms instantly with our online booking form.
+              </p>
+              <a
+                href="#rooms"
+                class="mt-4 inline-block text-uh-red hover:underline font-medium"
+                >Explore Rooms &rarr;</a
+              >
+            </div>
+            <!-- Feature 2: Information/Hours -->
+            <div
+              class="p-6 bg-white rounded-xl shadow-lg hover:shadow-2xl transition duration-300"
+            >
+              <svg
+                class="w-10 h-10 mx-auto mb-4 text-uh-red"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                ></path>
+              </svg>
+              <h3 class="text-xl font-semibold text-uh-red mb-2">
+                Hours & Location
+              </h3>
+              <p class="text-uh-gray">
+                Find our operating hours, directions, parking information, and
+                contact details all in one spot.
+              </p>
+              <a
+                href="#contact"
+                class="mt-4 inline-block text-uh-red hover:underline font-medium"
+                >View Contact Info &rarr;</a
+              >
+            </div>
+            <!-- Feature 3: Events/FAQs -->
+            <div
+              class="p-6 bg-white rounded-xl shadow-lg hover:shadow-2xl transition duration-300"
+            >
+              <svg
+                class="w-10 h-10 mx-auto mb-4 text-uh-red"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M8.228 9.247a1 1 0 01.782-.087c2.25-.563 4.48-1.468 6.55-2.735a.25.25 0 01.12.115l.625 1.25a.25.25 0 01-.12.332l-2.083 1.296a1 1 0 00-.472.936c.075.765.25 1.5.54 2.195a.25.25 0 01-.12.332l-2.083 1.296a1 1 0 01-.944 0L10.25 16.48a.25.25 0 01-.12-.332c.29-.695.465-1.43.54-2.195a1 1 0 00-.472-.936L7.25 11.66a.25.25 0 01-.12-.332l.625-1.25a.25.25 0 01.12-.115c2.07-1.267 4.3-2.172 6.55-2.735a1 1 0 01.782.087z"
+                ></path>
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 11h.01M12 15h.01M12 19h.01"
+                ></path>
+              </svg>
+              <h3 class="text-xl font-semibold text-uh-red mb-2">
+                Events & FAQs
+              </h3>
+              <p class="text-uh-gray">
+                Check out the calendar for upcoming student activities and
+                quickly find answers to common questions.
+              </p>
+              <a
+                href="#faqs"
+                class="mt-4 inline-block text-uh-red hover:underline font-medium"
+                >Read FAQs &rarr;</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Rooms & Booking Section (Simplified link, full form is a later deliverable) -->
+      <section id="rooms" class="py-16">
+        <div class="container mx-auto px-4">
+          <h2 class="text-3xl font-bold text-center text-uh-gray mb-6">
+            Rooms & Booking
+          </h2>
+          <div class="max-w-3xl mx-auto text-center">
+            <p class="text-lg text-uh-gray mb-6">
+              The UHSL Student Center features 15 dedicated Study Pods, 4 Large
+              Conference Rooms, the main Student Hub, a Campus Café, and a
+              Computer Lab.
+            </p>
+            <p class="text-lg text-uh-gray mb-8">
+              Ready to book a space for your group project or seminar? Check
+              availability and reserve your room today.
+            </p>
+            <a
+              href="booking.html"
+              class="inline-block bg-uh-red text-white font-bold py-3 px-8 rounded-lg shadow-lg hover:bg-red-700 transition duration-300 transform hover:scale-105"
+            >
+              Start Room Booking Form &rarr;
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Events Section -->
+      <section id="events" class="py-16 bg-uh-light-gray">
+        <div class="container mx-auto px-4">
+          <h2 class="text-3xl font-bold text-center text-uh-gray mb-10">
+            Upcoming Events
+          </h2>
+          <div class="max-w-4xl mx-auto space-y-6">
+            <div
+              class="p-4 bg-white rounded-lg shadow-md border-l-4 border-uh-red"
+            >
+              <p class="text-sm text-uh-gray">
+                November 20, 2025 | 10:00 AM - 6:00 PM
+              </p>
+              <h3 class="text-xl font-semibold text-uh-red">
+                UH at Sugar Land Career Fair: Nursing Majors
+              </h3>
+              <p class="text-uh-gray">Conference Room D (Floor 2)</p>
+            </div>
+            <div
+              class="p-4 bg-white rounded-lg shadow-md border-l-4 border-uh-red"
+            >
+              <p class="text-sm text-uh-gray">
+                November 25, 2025 | 11:00 AM - 1:00 PM
+              </p>
+              <h3 class="text-xl font-semibold text-uh-red">
+                Campus Life Food Truck Festival
+              </h3>
+              <p class="text-uh-gray">Main Entrance Plaza</p>
+            </div>
+            <div
+              class="p-4 bg-white rounded-lg shadow-md border-l-4 border-uh-red"
+            >
+              <p class="text-sm text-uh-gray">
+                December 1-3, 2025 | 9:00 AM - 5:00 PM
+              </p>
+              <h3 class="text-xl font-semibold text-uh-red">
+                Finals Study Blitz Kick-off
+              </h3>
+              <p class="text-uh-gray">Student Hub (Floor 1)</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQs Section (Collapsible using JavaScript) -->
+      <section id="faqs" class="py-16">
+        <div class="container mx-auto px-4">
+          <h2 class="text-3xl font-bold text-center text-uh-gray mb-10">
+            Frequently Asked Questions
+          </h2>
+
+          <div class="max-w-4xl mx-auto space-y-4">
+            <!-- FAQ 1: Operating Hours -->
+            <div class="border border-gray-200 rounded-lg overflow-hidden">
+              <button
+                class="faq-toggle w-full flex justify-between items-center p-5 bg-uh-light-gray hover:bg-gray-200 transition duration-200 focus:outline-none"
+              >
+                <span class="text-lg font-semibold text-uh-gray"
+                  >What are the Student Center's operating hours?</span
+                >
+                <svg
+                  class="w-6 h-6 transform transition-transform duration-300"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"
+                  ></path>
+                </svg>
+              </button>
+              <div class="faq-answer bg-white">
+                <p class="p-5 text-uh-gray">
+                  The UHSL Student Center is open Monday through Friday from
+                  7:00 AM to 10:00 PM, and Saturday/Sunday from 10:00 AM to 6:00
+                  PM. Hours are subject to change during university holidays and
+                  semester breaks; please check the Contact page for the most
+                  current information.
+                </p>
+              </div>
+            </div>
+
+            <!-- FAQ 2: Parking -->
+            <div class="border border-gray-200 rounded-lg overflow-hidden">
+              <button
+                class="faq-toggle w-full flex justify-between items-center p-5 bg-uh-light-gray hover:bg-gray-200 transition duration-200 focus:outline-none"
+              >
+                <span class="text-lg font-semibold text-uh-gray"
+                  >Where should I park when visiting the center?</span
+                >
+                <svg
+                  class="w-6 h-6 transform transition-transform duration-300"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"
+                  ></path>
+                </svg>
+              </button>
+              <div class="faq-answer bg-white">
+                <p class="p-5 text-uh-gray">
+                  Visitor parking is available in Lot 3, directly accessible
+                  from University Drive. Valid UH parking permits are required
+                  for all non-visitor lots. Guests attending events should
+                  follow event-specific parking instructions provided by the
+                  host.
+                </p>
+              </div>
+            </div>
+
+            <!-- FAQ 3: Room Booking Policy -->
+            <div class="border border-gray-200 rounded-lg overflow-hidden">
+              <button
+                class="faq-toggle w-full flex justify-between items-center p-5 bg-uh-light-gray hover:bg-gray-200 transition duration-200 focus:outline-none"
+              >
+                <span class="text-lg font-semibold text-uh-gray"
+                  >What is the room booking policy?</span
+                >
+                <svg
+                  class="w-6 h-6 transform transition-transform duration-300"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"
+                  ></path>
+                </svg>
+              </button>
+              <div class="faq-answer bg-white">
+                <p class="p-5 text-uh-gray">
+                  Study Pods on the second floor can be booked for up to 3 hours
+                  per day by current UH students. Conference Rooms require
+                  approval and are generally reserved for faculty, staff, and
+                  large student organizations. All reservations must be made via
+                  the online booking form found in the "Rooms & Booking"
+                  section. Study Pods on the first floor are intended to be
+                  walk-in.
+                </p>
+              </div>
+            </div>
+
+            <!-- FAQ 4: Food Options -->
+            <div class="border border-gray-200 rounded-lg overflow-hidden">
+              <button
+                class="faq-toggle w-full flex justify-between items-center p-5 bg-uh-light-gray hover:bg-gray-200 transition duration-200 focus:outline-none"
+              >
+                <span class="text-lg font-semibold text-uh-gray"
+                  >Are food and drinks allowed in the study rooms?</span
+                >
+                <svg
+                  class="w-6 h-6 transform transition-transform duration-300"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"
+                  ></path>
+                </svg>
+              </button>
+              <div class="faq-answer bg-white">
+                <p class="p-5 text-uh-gray">
+                  Yes, covered drinks and light snacks are generally permitted
+                  in all areas, including the Study Pods and Student Hub. Full
+                  meals and catering are only permitted in the Campus Café and
+                  designated Conference Rooms. Please dispose of all trash
+                  properly.
+                </p>
+              </div>
+            </div>
+
+            <!-- FAQ 5: Lost & Found -->
+            <div class="border border-gray-200 rounded-lg overflow-hidden">
+              <button
+                class="faq-toggle w-full flex justify-between items-center p-5 bg-uh-light-gray hover:bg-gray-200 transition duration-200 focus:outline-none"
+              >
+                <span class="text-lg font-semibold text-uh-gray"
+                  >Where is the Lost and Found located?</span
+                >
+                <svg
+                  class="w-6 h-6 transform transition-transform duration-300"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"
+                  ></path>
+                </svg>
+              </button>
+              <div class="faq-answer bg-white">
+                <p class="p-5 text-uh-gray">
+                  Lost and found items are managed at the Information/Reception
+                  desk located in the main lobby on Floor 1. Please visit the
+                  desk or call the main number on the Contact page to report or
+                  inquire about a lost item.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Section (Footer) -->
+      <section id="contact" class="bg-uh-gray py-12">
+        <h2 class="text-3xl font-bold text-center text-uh-gray mb-10">
+          Contact Us
+        </h2>
+        <div
+          class="container mx-auto px-4 text-gray-500 grid md:grid-cols-3 gap-8"
+        >
+          <div>
+            <h3 class="text-xl font-bold mb-3 md:text-center">Location</h3>
+            <div class="text-center">
+              <p style="margin: 0">UHSL Student Center</p>
+              <p style="margin: 0">1400 University Drive</p>
+              <p style="margin: 0">Sugar Land, TX 77479</p>
+            </div>
+          </div>
+          <div class="md: text-center">
+            <h3 class="text-xl font-bold mb-3">Hours</h3>
+            <p>Mon-Fri: 7:00 AM - 10:00 PM</p>
+            <p>Sat: 10:00 AM - 6:00 PM</p>
+            <p class="text-sm mt-2 text-gray-400 italic">
+              Closed on Sundays and major holidays.
+            </p>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold mb-3 text-center">Contact</h3>
+            <p class="text-center">
+              Email:
+              <a href="mailto:studentcenter@uhsl.edu" class="hover:underline"
+                >studentcenter@uhsl.edu</a
+              >
+            </p>
+            <p class="text-center">Phone: (281) 555-1234</p>
+          </div>
+        </div>
+        <img
+          style="margin-top: 20px"
+          src="UHSLFront.png"
+          alt="UHSL Student Center Building"
+          class="mx-auto w-1/2 rounded-lg shadow-lg"
+        />
+        <div
+          class="text-center text-gray-400 mt-10 border-t border-gray-700 pt-4"
+        >
+          &copy; 2025 University of Houston - Sugar Land. All rights reserved by
+          Mathew Thomas ;)
+        </div>
+      </section>
+    </main>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // FAQ Accordion Toggle
+        const faqToggles = document.querySelectorAll(".faq-toggle");
+
+        faqToggles.forEach((button) => {
+          button.addEventListener("click", () => {
+            const answer = button.nextElementSibling;
+            const icon = button.querySelector("svg");
+            const isActive = answer.classList.contains("active");
+
+            // Close all other active answers
+            document
+              .querySelectorAll(".faq-answer.active")
+              .forEach((activeAnswer) => {
+                if (activeAnswer !== answer) {
+                  activeAnswer.classList.remove("active");
+                  activeAnswer.previousElementSibling.querySelector(
+                    "svg"
+                  ).style.transform = "rotate(0deg)";
+                }
+              });
+
+            // Toggle the clicked answer
+            if (!isActive) {
+              answer.classList.add("active");
+              icon.style.transform = "rotate(180deg)";
+            } else {
+              answer.classList.remove("active");
+              icon.style.transform = "rotate(0deg)";
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

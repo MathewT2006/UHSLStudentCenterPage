@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UHSL Student Center - Book a Room</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      /* Setting colors */
+      :root {
+        --uh-red: #cc0000;
+        --uh-gray: #555555;
+        --uh-light-gray: #f7f7f7;
+      }
+      .text-uh-red {
+        color: var(--uh-red);
+      }
+      .bg-uh-red {
+        background-color: var(--uh-red);
+      }
+      .border-uh-red {
+        border-color: var(--uh-red);
+      }
+      .text-uh-gray {
+        color: var(--uh-gray);
+      }
+      /* Setting font style */
+      body {
+        font-family: "Georgia", serif;
+        color: #333;
+        background-color: white;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+    </style>
+  </head>
+  <body class="antialiased flex flex-col min-h-screen">
+    <header class="sticky top-0 z-50 bg-white shadow-md">
+      <nav
+        class="container mx-auto px-4 py-4 flex justify-between items-center"
+      >
+        <a
+          href="index.html#home"
+          class="text-2xl font-bold text-uh-red flex items-center"
+        >
+          <img src="UHLogo.png" alt="UH Logo" class="h-10 mr-3" />
+          UHSL Student Center
+        </a>
+        <div class="hidden md:flex space-x-6 text-uh-gray font-medium">
+          <a
+            href="index.html#home"
+            class="hover:text-uh-red transition duration-300"
+            >About</a
+          >
+          <a
+            href="booking.html"
+            class="text-uh-red font-bold transition duration-300"
+            >Rooms & Booking</a
+          >
+          <a
+            href="index.html#events"
+            class="hover:text-uh-red transition duration-300"
+            >Events</a
+          >
+          <a
+            href="index.html#faqs"
+            class="hover:text-uh-red transition duration-300"
+            >FAQs</a
+          >
+          <a
+            href="index.html#contact"
+            class="hover:text-uh-red transition duration-300"
+            >Contact</a
+          >
+        </div>
+      </nav>
+    </header>
+
+    <main class="flex-grow">
+      <section id="booking-form" class="py-16 bg-uh-light-gray">
+        <div class="container mx-auto px-4">
+          <h2 class="text-3xl font-bold text-center text-uh-gray mb-4">
+            Reserve Your Room
+          </h2>
+          <p class="text-center text-uh-gray text-lg max-w-2xl mx-auto mb-10">
+            Review the floor plans below, then fill out the form to request a
+            room.
+          </p>
+
+          <div
+            class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 mb-12"
+          >
+            <div>
+              <h3 class="text-xl font-semibold text-uh-red mb-3 text-center">
+                Floor 1 Map
+              </h3>
+              <img
+                src="UHSLFloor1.png"
+                alt="UHSL Student Center Floor 1 Map"
+                class="rounded-lg shadow-lg border border-gray-200"
+              />
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-uh-red mb-3 text-center">
+                Floor 2 Map
+              </h3>
+              <img
+                src="UHSLFloor2.png"
+                alt="UHSL Student Center Floor 2 Map"
+                class="rounded-lg shadow-lg border border-gray-200"
+              />
+            </div>
+          </div>
+          <form
+            action="/submit-booking"
+            method="POST"
+            class="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-lg border border-gray-200"
+          >
+            <fieldset class="mb-6">
+              <legend class="text-xl font-semibold text-uh-red mb-4">
+                Your Information
+              </legend>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label
+                    for="name"
+                    class="block text-sm font-medium text-uh-gray"
+                    >Full Name</label
+                  >
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-uh-red focus:ring focus:ring-uh-red focus:ring-opacity-50"
+                    required
+                  />
+                </div>
+                <div>
+                  <label
+                    for="email"
+                    class="block text-sm font-medium text-uh-gray"
+                    >Email Address</label
+                  >
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-uh-red focus:ring focus:ring-uh-red focus:ring-opacity-50"
+                    required
+                  />
+                </div>
+              </div>
+            </fieldset>
+
+            <fieldset class="mb-6">
+              <legend class="text-xl font-semibold text-uh-red mb-4">
+                Booking Details
+              </legend>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label
+                    for="roomType"
+                    class="block text-sm font-medium text-uh-gray"
+                    >Room Type</label
+                  >
+                  <select
+                    id="roomType"
+                    name="roomType"
+                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-uh-red focus:ring focus:ring-uh-red focus:ring-opacity-50"
+                    required
+                  >
+                    <option value="">Select a room type...</option>
+                    <option value="Study Pod (2-person)">
+                      Study Pod (2-person)
+                    </option>
+                    <option value="Study Room (6-person)">
+                      Study Room (6-person)
+                    </option>
+                    <option value="Conference Room A">Conference Room A</option>
+                    <option value="Conference Room B">Conference Room B</option>
+                    <option value="Conference Room C">Conference Room C</option>
+                    <option value="Conference Room D">Conference Room D</option>
+                    <option value="Computer Lab Seat">Computer Lab Seat</option>
+                  </select>
+                </div>
+                <div>
+                  <label
+                    for="guests"
+                    class="block text-sm font-medium text-uh-gray"
+                    >Number of Guests</label
+                  >
+                  <input
+                    type="number"
+                    id="guests"
+                    name="guests"
+                    min="1"
+                    max="20"
+                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-uh-red focus:ring focus:ring-uh-red focus:ring-opacity-50"
+                    required
+                  />
+                </div>
+                <div>
+                  <label
+                    for="bookingDate"
+                    class="block text-sm font-medium text-uh-gray"
+                    >Date</label
+                  >
+                  <input
+                    type="date"
+                    id="bookingDate"
+                    name="bookingDate"
+                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-uh-red focus:ring focus:ring-uh-red focus:ring-opacity-50"
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label
+                    for="timeSlot"
+                    class="block text-sm font-medium text-uh-gray"
+                    >Time Slot</label
+                  >
+                  <select
+                    id="timeSlot"
+                    name="timeSlot"
+                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-uh-red focus:ring focus:ring-uh-red focus:ring-opacity-5Click_me_to_enable_in-page_linking"
+                    required
+                  >
+                    <option value="">Select a time slot...</option>
+                    <option value="8am-10am">8:00 AM - 10:00 AM</option>
+                    <option value="10am-12pm">10:00 AM - 12:00 PM</option>
+                    <option value="12pm-2pm">12:00 PM - 2:00 PM</option>
+                    <option value="2pm-4pm">2:00 PM - 4:00 PM</option>
+                    <option value="4pm-6pm">4:00 PM - 6:00 PM</option>
+                  </select>
+                </div>
+              </div>
+              <div class="mt-4">
+                <label
+                  for="purpose"
+                  class="block text-sm font-medium text-uh-gray"
+                  >Purpose of Booking (optional)</label
+                >
+                <textarea
+                  id="purpose"
+                  name="purpose"
+                  rows="3"
+                  class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-uh-red focus:ring focus:ring-uh-red focus:ring-opacity-50"
+                  placeholder="e.g., Group project, Seminar, TA session"
+                ></textarea>
+              </div>
+            </fieldset>
+
+            <div class="text-right">
+              <button
+                type="submit"
+                class="inline-block bg-uh-red text-white font-bold py-3 px-8 rounded-lg shadow-lg hover:bg-red-700 transition duration-300 transform hover:scale-105"
+              >
+                Submit Request
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <section id="contact" class="bg-uh-gray py-12">
+      <h2 class="text-3xl font-bold text-center text-uh-gray mb-10">
+        Contact Us
+      </h2>
+      <div
+        class="container mx-auto px-4 text-gray-500 grid md:grid-cols-3 gap-8"
+      >
+        <div>
+          <h3 class="text-xl font-bold mb-3 md:text-center">Location</h3>
+          <div class="text-center">
+            <p style="margin: 0">UHSL Student Center</p>
+            <p style="margin: 0">1400 University Drive</p>
+            <p style="margin: 0">Sugar Land, TX 77479</p>
+          </div>
+        </div>
+        <div class="md: text-center">
+          <h3 class="text-xl font-bold mb-3">Hours</h3>
+          <p>Mon-Fri: 7:00 AM - 10:00 PM</p>
+          <p>Sat: 10:00 AM - 6:00 PM</p>
+          <p class="text-sm mt-2 text-gray-400 italic">
+            Closed on Sundays and major holidays.
+          </p>
+        </div>
+        <div>
+          <h3 class="text-xl font-bold mb-3 text-center">Contact</h3>
+          <p class="text-center">
+            Email:
+            <a href="mailto:studentcenter@uhsl.edu" class="hover:underline"
+              >studentcenter@uhsl.edu</a
+            >
+          </p>
+          <p class="text-center">Phone: (281) 555-1234</p>
+        </div>
+      </div>
+      <img
+        style="margin-top: 20px"
+        src="UHSLFront.png"
+        alt="UHSL Student Center Building"
+        class="mx-auto w-1/2 rounded-lg shadow-lg"
+      />
+      <div
+        class="text-center text-gray-400 mt-10 border-t border-gray-700 pt-4"
+      >
+        &copy; 2025 University of Houston - Sugar Land. All rights reserved by
+        Mathew Thomas ;)
+      </div>
+    </section>
+    <script>
+      // Simple date validation to prevent booking in the past
+      document.addEventListener("DOMContentLoaded", () => {
+        const dateInput = document.getElementById("bookingDate");
+        if (dateInput) {
+          const today = new Date().toISOString().split("T")[0];
+          dateInput.setAttribute("min", today);
+        }
+      });
+    </script>
+  </body>
+</html>
